@@ -19,11 +19,17 @@ pipeline {
             }
         }
 
+        
+
         stage('Build APK') {
-            steps {
-                sh 'flutter build apk'
-            }
-        }
+    steps {
+        sh '''
+            export JAVA_OPTS="-Xmx2048m"
+            export GRADLE_OPTS="-Dorg.gradle.daemon=false"
+            flutter build apk --verbose
+        '''
+    }
+}
 
         stage('Archive APK') {
             steps {
