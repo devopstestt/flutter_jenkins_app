@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git credentialsId: 'github-ssh', url: 'git@github.com:devopstestt/flutter_jenkins_app.git', branch: 'main'
+                git credentialsId: 'github-ssh', url: 'git@github.com:devopstestt/flutter_jenkins_app.git', branch: 'master'
             }
         }
 
