@@ -1,13 +1,14 @@
 pipeline {
   agent any
+    environment {
+        ANDROID_HOME = "/mnt/ebs/android-sdk"
+        FLUTTER_HOME = "/mnt/ebs/flutter"
+        GEM_HOME = "/mnt/ebs/gems"
+        PATH = "${FLUTTER_HOME}/bin:${ANDROID_HOME}/cmdline-tools/latest/bin:${ANDROID_HOME}/platform-tools:${GEM_HOME}/bin:/usr/bin:/bin"
+        JAVA_OPTS = "-Xmx2048m"
+        GRADLE_OPTS = "-Dorg.gradle.daemon=false"
+    }
 
-  environment {
-    ANDROID_HOME = "/mnt/ebs/android-sdk"
-    FLUTTER_HOME = "/mnt/ebs/flutter"
-    PATH = "${FLUTTER_HOME}/bin:${ANDROID_HOME}/cmdline-tools/latest/bin:${ANDROID_HOME}/platform-tools:/usr/bin:/bin"
-    JAVA_OPTS = "-Xmx2048m"
-    GRADLE_OPTS = "-Dorg.gradle.daemon=false"
-  }
 
   stages {
     stage('Checkout Code') {
